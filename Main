@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner menu = new Scanner(System.in);
+
+        do {
+            System.out.println("""
+                    ------------Opções-----------
+                    1 - Cadastrar novo aluno\s
+                    2 - Cadastrar novo professor\s
+                    3 - Cadastrar novo pedagogo\s
+                    4 - Emitir relatorio\s
+                    0 - Sair
+                    -----------------------------""");
+            int opcao = menu.nextInt();
+            if (opcao != 0){
+
+                switch (opcao){
+                    case 1:
+                        Aluno.cadastrarAluno();
+                        break;
+                    case 2:
+                        Professor professor = new Professor();
+                        professor.cadastrarProfessor();
+                        break;
+                    case 3:
+                        Pedagogo pedagogo = new Pedagogo();
+                        pedagogo.cadastrarPedagogo();
+                        break;
+                    case 4:
+                        System.out.println("""
+                    ------------Opções-----------
+                    1 - Relatório Alunos\s
+                    2 - Relatório Professores\s
+                    3 - Relatório Pedagogos\s
+                    4 - Emitir todos relatorio\s
+                    0 - Sair
+                    -----------------------------""");
+                        int opcaoRelatorio = menu.nextInt();
+                        switch (opcaoRelatorio){
+                            case 1:
+                                Aluno.relatorioAluno();
+                                break;
+                            case 2:
+                                Professor.relatorioProfessor();
+                                break;
+                            case 3:
+                                Pedagogo.relatorioPedagogo();
+                                break;
+                            case 4:
+                                Aluno.relatorioAluno();
+                                Professor.relatorioProfessor();
+                                Pedagogo.relatorioPedagogo();
+                                break;
+                            case 0:
+                                break;
+                        }
+                    case 0:
+                        break;
+                }}
+
+        }while (true);
+
+    }
+}
